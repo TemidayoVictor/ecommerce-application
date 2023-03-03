@@ -12,34 +12,39 @@ class Directory extends React.Component {
             sections: [
                 {
                     title: 'Hats',
-                    ImageName: 'image1',
-                    id: 1
+                    ImageName: '/images/hats.png',
+                    id: 1,
+                    linkUrl: 'hats'
                 },
 
                 {
                     title: 'Sneakers',
-                    ImageName: 'image2',
-                    id: 2
+                    ImageName: '/images/sneakers.png',
+                    id: 2,
+                    linkUrl: ''
                 },
 
                 {
                     title: 'Jackets',
-                    ImageName: 'image3',
-                    id: 3
+                    ImageName: '/images/jackets.png',
+                    id: 3,
+                    linkUrl: ''
                 },
 
                 {
                     title: 'Men',
-                    ImageName: 'image4',
+                    ImageName: '/images/men.png',
                     size: 'large',
-                    id: 4
+                    id: 4,
+                    linkUrl: ''
                 },
 
                 {
                     title: 'Women',
-                    ImageName: 'image5',
+                    ImageName: '/images/womens.png',
                     size: 'large',
-                    id: 5
+                    id: 5,
+                    linkUrl: ''
                 },
             ]
         }
@@ -49,8 +54,18 @@ class Directory extends React.Component {
         return (
             <div className="directory-menu">
                 {
-                    this.state.sections.map(({title, ImageName, id, size}) => (
-                        <MenuItem key={id} title={title} ImageName={ImageName} size={size} />
+                    // this.state.sections.map(({title, ImageName, id, size}) => (
+                    //     <MenuItem key={id} title={title} ImageName={ImageName} size={size} />
+                    // ))
+
+                    // an alternate method of mapping, instead of destructuring.
+                    // this.state.sections.map( section => (
+                    //     <MenuItem key={section.id} title={section.title} ImageName={section.ImageName} size={section.size} />
+                    // ))
+
+                    // an alternate method of mapping;
+                    this.state.sections.map( ({id, ...otherSectionProps}) => (
+                        <MenuItem key={id} {...otherSectionProps}/>
                     ))
                 }
             </div>
